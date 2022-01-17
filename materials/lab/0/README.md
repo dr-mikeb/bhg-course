@@ -15,6 +15,9 @@
     - “Basic” &&  “Comments” && “Numbers”
     - Publish your solutions
 
-4. Turn in a text response to WyoCloud:
-  - URL to your GitHub Repo
-  - URL to public exercism.org page
+4. Turn in to WyoCloud:
+  - Text entry with numbered elements:
+     1. URL to your GitHub Repo
+     2. Screenshot of codeanywhere showing file structure on left & ex4 results in a terminal window 
+     3. URL to public exercism.org page
+  
