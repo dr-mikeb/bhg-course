@@ -1,4 +1,4 @@
-# Lab 1
+# Lab 0
 Due: Jan 21 2022
 
 1. In GitHub
