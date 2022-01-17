@@ -1,3 +1,6 @@
+# Lab 1
+Due: Jan 21 2022
+
 1. In GitHub
   - Create account (if you don’t already have one)
   - Publicly Fork https://github.com/cosc-bhg-2021/course-materials

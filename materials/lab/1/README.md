@@ -1,3 +1,5 @@
+# Lab 1
+Due: Jan 28 2022
 
 1. In exercism.org
  - Complete:
