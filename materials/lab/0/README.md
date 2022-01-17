@@ -15,7 +15,7 @@ Due: Jan 21 2022
   - Create Account
   - Make Profile Public
   - Join Go Track and Complete:
-    - “Basic” &&  “Comments” && “Numbers”
+    - “Basic” &&  “Comments” && “Numbers” && Arithmetic Operators && Booleans
     - Publish your solutions
 
 4. Turn in to WyoCloud:

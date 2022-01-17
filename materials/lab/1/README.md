@@ -3,7 +3,7 @@ Due: Jan 28 2022
 
 1. In exercism.org
  - Complete:
-    - Go Syllabus 
+    - 24 remaining modules in GO Syllabus 
     - Publish your solutions
 
 2. Turn in to WyoCloud:
