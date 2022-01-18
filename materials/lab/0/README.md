@@ -10,7 +10,7 @@ Due: Jan 21 2022
    - Connect GitHub Account to codeanywhere account
    - Create a codeanywhere Go container
        - When starting codeanywhere Go Container use your forked version of the repo
-       - go run through materials > les > 0 > ex[1-4] > *.go
+       - go run through materials > lec > 0 > ex[1-4] > *.go
 
 3. In exercism.org
    - Create Account
