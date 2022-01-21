@@ -61,6 +61,7 @@ func main() {
 	m[1] = "my"
 	m[2] = "name"
 	m[3] = "is"
+	m[4] = "Joseph Anda Ogirima"
 
 	for idx, val := range m {
 		// modify this statement to remove idx or val; what happens?
