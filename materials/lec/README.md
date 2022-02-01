@@ -5,4 +5,5 @@ Author: Dr. Mike Borowczak
 Last Updated: 17 JAN 2021
 
 Contents:
-- 0: Basic Introduction 
+- 0: Basic Introduction
+- 1: BHG Chp 2 - Connecting / TCP / Concurrency 
