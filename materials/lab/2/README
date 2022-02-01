@@ -1,0 +1,19 @@
+# Lab 2
+Due: Feb 11 2022
+
+1. Update Your Forked Repository
+2. Navigate to > materials > lab > 2
+3. bhg-scanner folder has
+   1. main > main.go : in this folder `go build` then `./main`
+   2. scanner > scanner.go and scanner_test.go  : in this folder `go test`
+4. Complete the TODO's listed in scanner > scanner.go
+5. Make one major other modification to the code; update/add a test or two
+6. Update the README file in bhg-scanner that describes, 1 what the code does, modification to the code (based on the todos) AND includes details of the modification you chose to make in #5
+
+
+Submit: 
+
+
+1. Captured Output (csv file)
+2. Screen Capture of timing information (e.g.,> time ./YourBinary )
+3. Link to your updated code in your github repository (should be publically accessible) 
