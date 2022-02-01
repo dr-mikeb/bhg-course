@@ -10,18 +10,22 @@ import (
 	"fmt"
 	"net"
 	"sort"
+	"time"
 )
 
 //TODO 3 : ADD closed ports; currently code only tracks open ports
+var closedports []int
 var openports []int  // notice the capitalization here. access limited!
 
 
-func worker(ports, results chan int) {
+func worker(ports, results chan int){//}, chans []chan int) {
 	for p := range ports {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)    
-		conn, err := net.Dial("tcp", address) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!)
+		conn, err := net.DialTimeout("tcp", address, 1 * time.Second) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!)
 		if err != nil { 
 			results <- 0
+			//chans[0]<-0
+			//chans[1]<-p
 			continue
 		}
 		conn.Close()
@@ -34,38 +38,61 @@ func worker(ports, results chan int) {
 // med: easy + return  complex data structure(s?) (maps or slices) containing the ports.
 // hard: restructuring code - consider modification to class/object 
 // No matter what you do, modify scanner_test.go to align; note the single test currently fails
-func PortScanner() int {  
+func PortScanner(subset []int) ([]int,[]int) {  
 
 	ports := make(chan int, 100)   // TODO 4: TUNE THIS FOR CODEANYWHERE / LOCAL MACHINE
+	//chans := make([]chan int, 2)	
 	results := make(chan int)
-
 	for i := 0; i < cap(ports); i++ {
 		go worker(ports, results)
 	}
-
+	
 	go func() {
-		for i := 1; i <= 1024; i++ {
-			ports <- i
+		//for i := 1; i <= 1024; i++ {
+		for _, val := range subset{
+			//ports <- i
+			ports <- val
 		}
 	}()
-
-	for i := 0; i < 1024; i++ {
+	//trackClosedPorts := 1
+	trackClosedPorts := subset[0]
+	// for i := 0; i < 1024; i++ {
+	for i := 0; i < len(subset); i++ {
 		port := <-results
+
 		if port != 0 {
 			openports = append(openports, port)
+		}else{
+			//skip open port number
+			for _, val:= range openports{
+
+				if val==trackClosedPorts{
+					trackClosedPorts++
+				}
+			}
+			closedports = append(closedports, trackClosedPorts)
+			trackClosedPorts++
 		}
 	}
 
 	close(ports)
 	close(results)
 	sort.Ints(openports)
+	//sort closedports
+	sort.Ints(closedports)
 
 	//TODO 5 : Enhance the output for easier consumption, include closed ports
-
+	fmt.Printf("************Open Ports************\n")
 	for _, port := range openports {
-		fmt.Printf("%d open\n", port)
+		fmt.Printf("%d open, ", port)
 	}
+	fmt.Printf("\n************Closed Ports************\n")
+	for _, port := range closedports {
 
-	return len(openports) // TODO 6 : Return total number of ports scanned (number open, number closed); 
+		fmt.Printf("%d closed, ", port)
+	}
+	fmt.Printf("\n")
+	return openports, closedports
+	//return len(openports) // TODO 6 : Return total number of ports scanned (number open, number closed); 
 	//you'll have to modify the function parameter list in the defintion and the values in the scanner_test
 }
