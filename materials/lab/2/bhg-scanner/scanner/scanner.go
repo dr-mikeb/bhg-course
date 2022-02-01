@@ -19,7 +19,7 @@ var openports []int  // notice the capitalization here. access limited!
 func worker(ports, results chan int) {
 	for p := range ports {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)    
-		conn, err := net.Dial("tcp", address) // TODO 2 : REPLACE THIS WITH TIMEOUT (before testing!)
+		conn, err := net.Dial("tcp", address) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!)
 		if err != nil { 
 			results <- 0
 			continue
@@ -29,7 +29,11 @@ func worker(ports, results chan int) {
 	}
 }
 
-// for Part 5 - consider making PortScanner take a variable for the ports to scan (int? slice? ); make pass in a target address?
+// for Part 5 - consider
+// easy: taking in a variable for the ports to scan (int? slice? ); a target address (string?)?
+// med: easy + return  complex data structure(s?) (maps or slices) containing the ports.
+// hard: restructuring code - consider modification to class/object 
+// No matter what you do, modify scanner_test.go to align; note the single test currently fails
 func PortScanner() int {  
 
 	ports := make(chan int, 100)   // TODO 4: TUNE THIS FOR CODEANYWHERE / LOCAL MACHINE
@@ -62,5 +66,6 @@ func PortScanner() int {
 		fmt.Printf("%d open\n", port)
 	}
 
-	return len(openports) // TODO 6 : Return total number of ports scanned
+	return len(openports) // TODO 6 : Return total number of ports scanned (number open, number closed); 
+	//you'll have to modify the function parameter list in the defintion and the values in the scanner_test
 }
