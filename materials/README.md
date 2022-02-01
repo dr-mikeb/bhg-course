@@ -1,8 +1,8 @@
-Lecture 0
+Course Materials
 - This folder materials related to the 2022 BHG course 
 
 Author: Dr. Mike Borowczak
-Last Updated: 17 JAN 2021
+Last Updated: 1 FEB 2021
 
 Contents:
 - lec : Lecture Examples
