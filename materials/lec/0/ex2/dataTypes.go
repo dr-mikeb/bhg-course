@@ -7,11 +7,13 @@ func main() {
 	z := int(42)
 	var y = int(42)
 	var x = "Hello Uwyo!"
+	w := "I'm a string"
+
+	fmt.Printf("z = %d, y = %d, x = %s, w=%s\n", z,y,x,w)
 
 	// Go Sytanx: Complex Built-in Slices/Maps
 	var s = make([]string, 0)
 	var m = make(map[string]int)
-	fmt.Printf("z = %d, y = %d, x = %s\n", z,y,x)
 
 	s = append(s, "Go")
 	s = append(s, "Pokes")
