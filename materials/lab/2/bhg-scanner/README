@@ -28,4 +28,8 @@ scanned instead of 1024
 -TestTotalPortsScanned() checks to see if the returned open port slice and closed port slice 
 match their expected outcomes.
 
+Questions:
+TODO 1 & 4
+Testing duplicate
+Time information
 
