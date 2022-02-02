@@ -2,7 +2,7 @@
 // Code : https://github.com/blackhat-go/bhg/blob/c27347f6f9019c8911547d6fc912aa1171e6c362/ch-2/tcp-scanner-final/main.go
 // License: {$RepoRoot}/materials/BHG-LICENSE
 // Useage:
-// {TODO 1: FILL IN}
+//Isaiah Kiefer, Lab 2
 
 package scanner
 
