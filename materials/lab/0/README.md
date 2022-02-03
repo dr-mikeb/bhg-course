@@ -10,7 +10,7 @@ Due: Jan 21 2022
    - Connect GitHub Account to codeanywhere account
    - Create a codeanywhere Go container
        - When starting codeanywhere Go Container use your forked version of the repo
-       - go run through materials > les > 0 > ex[1-4] > *.go
+       - go run through materials > lec > 0 > ex[1-4] > *.go
 
 3. In exercism.org
    - Create Account
@@ -19,9 +19,10 @@ Due: Jan 21 2022
       - “Basic” &&  “Comments” && “Numbers” && "Arithmetic Operators" && "Booleans"
       - Publish your solutions
 
-4. Turn in to WyoCloud:
+4. Turn in to [WyoCourses](https://uwyo.instructure.com/courses/562184/assignments/4913010):   
     - Text entry with numbered elements:
       1. URL to your GitHub Repo
       2. Screenshot of codeanywhere showing file structure on left & ex4 results in a terminal window 
       3. URL to public exercism.org page
+ 
   
