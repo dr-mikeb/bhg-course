@@ -19,6 +19,8 @@ var openports []int  // notice the capitalization here. access limited!
 
 
 func worker(ports, results chan int){//}, chans []chan int) {
+	openports = []int{}
+	closedports = []int{}
 	for p := range ports {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)    
 		conn, err := net.DialTimeout("tcp", address, 1 * time.Second) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!)
@@ -82,7 +84,7 @@ func PortScanner(subset []int) ([]int,[]int) {
 	sort.Ints(closedports)
 
 	//TODO 5 : Enhance the output for easier consumption, include closed ports
-	fmt.Printf("************Open Ports************\n")
+	fmt.Printf("\n************Open Ports************\n")
 	for _, port := range openports {
 		fmt.Printf("%d open, ", port)
 	}
