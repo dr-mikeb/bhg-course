@@ -30,12 +30,14 @@ func main() {
 		log.Panicln(err)
 	}
 
-	fmt.Printf("Host Data Dump")
+	fmt.Printf("Host Data Dump\n")
 	for _, host := range hostSearch.Matches {
 		fmt.Println("==== start ",host.IPString,"====")
 		h,_ := json.Marshal(host)
 		fmt.Println(string(h))
 		fmt.Println("==== end ",host.IPString,"====")
+		fmt.Println("Press the Enter Key to continue.")
+		fmt.Scanln()
 	}
 
 
