@@ -71,7 +71,7 @@ func PortScanner(start int, end int) ([]int,[]int) {
 
 	close(ports)
 	close(results)
-	
+	sort.Ints(openports)
 	//trackClosedPorts tracks the closed ports
 	trackClosedPorts := start
 
@@ -89,7 +89,6 @@ func PortScanner(start int, end int) ([]int,[]int) {
 		closedports = append(closedports, trackClosedPorts)
 		trackClosedPorts++
 	}
-	sort.Ints(openports)
 	//sort closedports
 	sort.Ints(closedports)
 

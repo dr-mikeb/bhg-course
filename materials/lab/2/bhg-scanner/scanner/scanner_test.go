@@ -7,9 +7,7 @@ import (
 
 // THESE TESTS ARE LIKELY TO FAIL IF YOU DO NOT CHANGE HOW the worker connects (e.g., you should use DialTimeout)
 func TestOpenPort(t *testing.T){
-	// temp := []int{20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,
-	// 49,50,51,52,53,54,55,56,57,58,59,60,61,62,3,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81}
-	//temp := []int{20,22,77,78,79,80,81}
+	
     got, _ := PortScanner(20,81) // Currently function returns only number of open ports
     
 	want := []int{22, 80} // default value when passing in 1024 TO scanme; also only works because currently PortScanner only returns 
@@ -19,15 +17,11 @@ func TestOpenPort(t *testing.T){
 			t.Errorf("got %d, wanted %d", got[i], want[i])
 		}
 	}
-	// for _, val := range closed{
-	// 	fmt.Printf("test closed: %d ", val)
-	// }
+	
 }
 
 func TestTotalPortsScanned(t *testing.T){
 	// THIS TEST WILL FAIL - YOU MUST MODIFY THE OUTPUT OF PortScanner()
-	// temp := []int{20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,
-		// 49,50,51,52,53,54,55,56,57,58,59,60,61,62,3,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81}
     got1, got2 := PortScanner(20,81) // Currently function returns only number of open ports
 	//got := open + closed
     want1 := []int{22,80} // default value; consider what would happen if you parameterize the portscanner ports to scan
