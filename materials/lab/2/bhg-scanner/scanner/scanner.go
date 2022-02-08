@@ -1,7 +1,8 @@
 // bhg-scanner/scanner.go modified from Black Hat Go > CH2 > tcp-scanner-final > main.go
 // Code : https://github.com/blackhat-go/bhg/blob/c27347f6f9019c8911547d6fc912aa1171e6c362/ch-2/tcp-scanner-final/main.go
 // License: {$RepoRoot}/materials/BHG-LICENSE
-// Useage:
+// Useage: Used when running the main.go program in the main folder. PortScanner() is called with 
+//the following: ./main
 //Isaiah Kiefer, Lab 2
 
 package scanner
@@ -19,8 +20,7 @@ var openports []int  // notice the capitalization here. access limited!
 
 
 func worker(ports, results chan int){//}, chans []chan int) {
-	openports = []int{}
-	closedports = []int{}
+	
 	for p := range ports {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)    
 		conn, err := net.DialTimeout("tcp", address, 1 * time.Second) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!)
@@ -40,8 +40,13 @@ func worker(ports, results chan int){//}, chans []chan int) {
 // med: easy + return  complex data structure(s?) (maps or slices) containing the ports.
 // hard: restructuring code - consider modification to class/object 
 // No matter what you do, modify scanner_test.go to align; note the single test currently fails
-func PortScanner(subset []int) ([]int,[]int) {  
-
+func PortScanner(start int, end int) ([]int,[]int) {  
+	openports = []int{}
+	closedports = []int{}
+	//make sure the start is less than the end
+	if end - start < 0{
+		return openports, closedports
+	}
 	ports := make(chan int, 100)   // TODO 4: TUNE THIS FOR CODEANYWHERE / LOCAL MACHINE
 	//chans := make([]chan int, 2)	
 	results := make(chan int)
@@ -51,34 +56,39 @@ func PortScanner(subset []int) ([]int,[]int) {
 	
 	go func() {
 		//for i := 1; i <= 1024; i++ {
-		for _, val := range subset{
-			//ports <- i
-			ports <- val
+		for i:= start; i<=end; i++{
+			ports <- i
 		}
 	}()
-	//trackClosedPorts := 1
-	trackClosedPorts := subset[0]
+	
 	// for i := 0; i < 1024; i++ {
-	for i := 0; i < len(subset); i++ {
+	for i := 0; i < (end - start)+1; i++ {
 		port := <-results
-
 		if port != 0 {
 			openports = append(openports, port)
-		}else{
-			//skip open port number
-			for _, val:= range openports{
-
-				if val==trackClosedPorts{
-					trackClosedPorts++
-				}
-			}
-			closedports = append(closedports, trackClosedPorts)
-			trackClosedPorts++
 		}
 	}
 
 	close(ports)
 	close(results)
+	
+	//trackClosedPorts tracks the closed ports
+	trackClosedPorts := start
+
+	//this math determines how many closed ports there should be
+	numberOfClosedPorts := ( (end - start) + 1 ) - len(openports)
+
+	//cycle through and get the number for each closed port while skipping open ports
+	for i:=0; i < numberOfClosedPorts; i++{
+		for _, val:= range openports{
+
+			if val==trackClosedPorts{
+				trackClosedPorts++
+			}
+		}
+		closedports = append(closedports, trackClosedPorts)
+		trackClosedPorts++
+	}
 	sort.Ints(openports)
 	//sort closedports
 	sort.Ints(closedports)

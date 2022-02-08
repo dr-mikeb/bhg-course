@@ -2,11 +2,12 @@ You might need to do a "go mod init bhg-scanner" or "go mod tidy"
 
 Isaiah Kiefer
 1. What the code does:
--The PortScanner() uses goroutines to manage the concurrent work done by the workers. 
+-The PortScanner() uses goroutines to manage the concurrent work done by the workers.
+-The function takes in two parameters: a start and an end for the range of ports to be scanned 
 -The worker function scans for the port and assigns the result channel based on whether the port is open or closed. If the port is open,
 then the result is the port number, otherwise the result is 0. 
 -There is a result-gathering loop that recieves the result channels. Open ports are appended to an openports slice, and closed ports are appended to a closedports slice.
--The channels get closed, and the ports are sorted.\
+-The channels get closed, and the ports are sorted.
 -The open ports and closed ports are printed
 
 2. Modifications based on the TODOs:
@@ -21,9 +22,9 @@ added identifier labels for Open and Closed ports.
 But in Part 5 I have it return slices of the ports.
 
 3. Part 5 Modifications:
-- I made it so that the function takes a slice parameter consisting of a subset of port numbers to be 
-scanned instead of 1024
-- The function now returns to slices: a slice of open ports, a slice of closed ports
+- I made it so that the function takes two int parameters. A start and an end for the range 
+of ports to be scanned.
+- The function now returns two slices: a slice of open ports, a slice of closed ports
 - TestOpenPort() checks to see if the returned open port slice matches the expected outcome
 -TestTotalPortsScanned() checks to see if the returned open port slice and closed port slice 
 match their expected outcomes.
