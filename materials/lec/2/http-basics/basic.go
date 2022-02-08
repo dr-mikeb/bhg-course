@@ -23,11 +23,11 @@ func newRequest(verb string, targetURL string) {
 	resp.Body.Close()
 	fmt.Println(resp.Status)
 	fmt.Printf("Ending %s request\n",verb)
-
-} 
+	} 
 
 func main() {
 	primaryURL := "https://www.google.com/robots.txt"
+
 	fmt.Printf("\n******Attempting a %s request to %s\n","GET",primaryURL)
 
 	resp, err := http.Get(primaryURL)
@@ -46,11 +46,10 @@ func main() {
 	}
 	fmt.Println(string(body))
 	resp.Body.Close()
-	fmt.Printf("Ending %s request\n","GET")
+	fmt.Printf("Ending %s request\n","GET")	
 	
-	
-	fmt.Printf("\n******Attempting a %s request to %s\n","HEAD",primaryURL)
-	resp, err = http.Head("https://www.google.com/robots.txt")
+	fmt.Printf("\n******Attempting a %s request to %s\n","GHEAD","primaryURL")
+		resp, err = http.Head("https://www.google.com/robots.txt")
 	if err != nil {
 		log.Panicln(err)
 	}
@@ -72,11 +71,8 @@ func main() {
 	resp.Body.Close()
 	fmt.Println(resp.Status)
 	fmt.Printf("Ending %s request\n","POST - FORM")
-
-
-	// Wrapped New Request
-	newRequest("DELETE", primaryURL)
-	newRequest("PUT", primaryURL)
-
+	
+	// Wrapped New Requestn	ewRequest	("DELETE", primaryURL)
+	newRequest("PUT", primaryURL)	
 
 }
