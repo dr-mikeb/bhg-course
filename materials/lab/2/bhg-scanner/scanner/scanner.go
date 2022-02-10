@@ -1,7 +1,10 @@
 // bhg-scanner/scanner.go modified from Black Hat Go > CH2 > tcp-scanner-final > main.go
 // Code : https://github.com/blackhat-go/bhg/blob/c27347f6f9019c8911547d6fc912aa1171e6c362/ch-2/tcp-scanner-final/main.go
 // License: {$RepoRoot}/materials/BHG-LICENSE
-// Useage: Used when running the main.go program in the main folder. PortScanner() is called with 
+//go build scanner.go
+// Useage: Used when running the main.go program in the main folder. 
+//Go back to course-materials/materials/lab/2/bhg-scanner/main and "go build main.go"
+//PortScanner() is called with 
 //the following: ./main
 //Isaiah Kiefer, Lab 2
 
