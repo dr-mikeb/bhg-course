@@ -73,6 +73,8 @@ func main() {
 	fmt.Printf("Ending %s request\n","POST - FORM")
 	
 	// Wrapped New Requestn	ewRequest	("DELETE", primaryURL)
+	newRequest("DELETE", primaryURL)	
 	newRequest("PUT", primaryURL)	
+	newRequest("GET", primaryURL)	
 
 }

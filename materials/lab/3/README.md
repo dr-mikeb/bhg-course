@@ -1,5 +1,5 @@
-# Lab 3
-Due Feb 18th at 11:59PM
+# Lab 3- PART 2
+Due Feb 25th at 11:59PM
 
 Lab3Dir : ~workspace/course_materials/materials/lab/3
 

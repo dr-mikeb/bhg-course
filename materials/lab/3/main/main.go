@@ -39,8 +39,8 @@ func main() {
 		h,_ := json.Marshal(host)
 		fmt.Println(string(h))
 		fmt.Println("==== end ",host.IPString,"====")
-		fmt.Println("Press the Enter Key to continue.")
-		fmt.Scanln()
+		//fmt.Println("Press the Enter Key to continue.")
+		//fmt.Scanln()
 	}
 
 
