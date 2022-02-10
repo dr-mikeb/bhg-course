@@ -4,8 +4,7 @@
 //go build scanner.go
 // Useage: Used when running the main.go program in the main folder. 
 //Go back to course-materials/materials/lab/2/bhg-scanner/main and "go build main.go"
-//PortScanner() is called with 
-//the following: ./main
+//PortScanner() is called with the following: ./main
 //Isaiah Kiefer, Lab 2
 
 package scanner
