@@ -10,18 +10,21 @@ import (
 	"fmt"
 	"net"
 	"sort"
+	"time"
 )
 
 //TODO 3 : ADD closed ports; currently code only tracks open ports
+//var closeports []int
 var openports []int  // notice the capitalization here. access limited!
 
 
 func worker(ports, results chan int) {
 	for p := range ports {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)    
-		conn, err := net.Dial("tcp", address) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!)
+		conn, err := net.Dial("tcp", address) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!) "address, 1 * time.second"
 		if err != nil { 
 			results <- 0
+			//results <- -1 * p   included in class "replace above"
 			continue
 		}
 		conn.Close()
@@ -34,8 +37,9 @@ func worker(ports, results chan int) {
 // med: easy + return  complex data structure(s?) (maps or slices) containing the ports.
 // hard: restructuring code - consider modification to class/object 
 // No matter what you do, modify scanner_test.go to align; note the single test currently fails
-func PortScanner() int {  
-
+func PortScanner() (int, int) {  
+	//var closeports []int
+    //var openports []int  
 	ports := make(chan int, 100)   // TODO 4: TUNE THIS FOR CODEANYWHERE / LOCAL MACHINE
 	results := make(chan int)
 
@@ -54,6 +58,12 @@ func PortScanner() int {
 		if port != 0 {
 			openports = append(openports, port)
 		}
+		// if port > 0{
+			//openports = append(openports,port)
+			//}else if port <0 {
+				//closeports = append(closeports, port)
+			//}
+		// check or replace the above
 	}
 
 	close(ports)
@@ -63,9 +73,14 @@ func PortScanner() int {
 	//TODO 5 : Enhance the output for easier consumption, include closed ports
 
 	for _, port := range openports {
-		fmt.Printf("%d open\n", port)
+		fmt.Printf("%d, open\n", port)
 	}
 
-	return len(openports) // TODO 6 : Return total number of ports scanned (number open, number closed); 
+	for _, port := range closeports {
+		fmt.Printf("%d, close\n", port)
+	}
+
+	return len(openports), len(closeports) // TODO 6 : Return total number of ports scanned (number open, number closed); 
 	//you'll have to modify the function parameter list in the defintion and the values in the scanner_test
+	
 }
