@@ -2,7 +2,10 @@
 // Code : https://github.com/blackhat-go/bhg/blob/c27347f6f9019c8911547d6fc912aa1171e6c362/ch-2/tcp-scanner-final/main.go
 // License: {$RepoRoot}/materials/BHG-LICENSE
 // Useage:
-// {TODO 1: FILL IN}
+// {TODO 1: }
+
+
+
 
 package scanner
 
@@ -19,8 +22,7 @@ func worker(ports, results chan int) {
 		address := fmt.Sprintf("scanme.nmap.org:%d", p)    
 		conn, err := net.DialTimeout("tcp", address, 1 * time.Second) // TODO 2 : REPLACE THIS WITH DialTimeout (before testing!) 
 		if err != nil { 
-			//results <- 0
-			results <- -1 * p   // in class "replace above for homework"
+			results <- -1 * p   
 			continue
 		}
 		conn.Close()
