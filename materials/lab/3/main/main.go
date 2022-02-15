@@ -6,11 +6,12 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"os"
-	"encoding/json"
 	"shodan/shodan"
+	"strings"
 )
 
 func main() {
@@ -34,6 +35,8 @@ func main() {
 	}
 
 	fmt.Printf("Host Data Dump\n")
+	fmt.Printf("***********Host Search***********")
+	
 	for _, host := range hostSearch.Matches {
 		fmt.Println("==== start ",host.IPString,"====")
 		h,_ := json.Marshal(host)
@@ -50,5 +53,24 @@ func main() {
 		fmt.Printf("%s, %d\n", host.IPString, host.Port)
 	}
 
+	
+	hostSearchFacets, err := s.HostFacets()
+	if err != nil {
+		log.Panicln(err)
+	}
 
+	fmt.Printf("***********Host Facets***********\n")
+	semiformat := fmt.Sprintf("%q\n", *hostSearchFacets)     // Turn the slice into a string that looks like ["one" "two" "three"]
+    tokens := strings.Split(semiformat, " ")    // Split this string by spaces
+    fmt.Printf(strings.Join(tokens, ", "))
+	
+	hostSearchFilters, err := s.HostFilters()
+	if err != nil {
+		log.Panicln(err)
+	}
+
+	fmt.Printf("***********Host Filters***********\n")
+	semiformat = fmt.Sprintf("%q\n", *hostSearchFilters)     // Turn the slice into a string that looks like ["one" "two" "three"]
+    tokens = strings.Split(semiformat, " ")    // Split this string by spaces
+    fmt.Printf(strings.Join(tokens, ", ")) //seperate each element with a comma
 }
