@@ -1,7 +1,8 @@
 // Build and Use this File to interact with the shodan package
 // In this directory lab/3/shodan/main:
 // go build main.go
-// SHODAN_API_KEY=YOURAPIKEYHERE ./main <search term>
+
+//SHODAN_API_KEY=XSf8g8GkPMYD58ZH5PtCrhxVjUIXSyUa ./main <search term>
 
 package main
 
@@ -11,6 +12,7 @@ import (
 	"os"
 	"encoding/json"
 	"shodan/shodan"
+	
 )
 
 func main() {
