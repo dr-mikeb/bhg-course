@@ -59,21 +59,6 @@ func GetAssignments(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
-func GetAssignment(w http.ResponseWriter, r *http.Request) {
-	log.Printf("Entering %s end point", r.URL.Path)
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(http.StatusOK)
-	params := mux.Vars(r)
-
-	for _, assignment := range Assignments {
-		if assignment.Id == params["id"]{
-			json.NewEncoder(w).Encode(assignment)
-			break
-		}
-	}
-	//TODO : Provide a response if there is no such assignment
-	//w.Write(jsonResponse)
-}
 
 func DeleteAssignment(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s DELETE end point", r.URL.Path)
@@ -103,12 +88,48 @@ func DeleteAssignment(w http.ResponseWriter, r *http.Request) {
 	w.Write(jsonResponse)
 }
 
+func GetAssignment(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Entering %s end point", r.URL.Path)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+	params := mux.Vars(r)
+
+	for _, assignment := range Assignments {
+		if assignment.Id == params["id"]{
+			json.NewEncoder(w).Encode(assignment)
+			break
+		}
+	}
+	//TODO : Provide a response if there is no such assignment
+	//w.Write(jsonResponse)
+}
+
 func UpdateAssignment(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s end point", r.URL.Path)
 	w.Header().Set("Content-Type", "application/json")
 	
-	//TODO This should like like cross betweeen Create / Get   
+	//TODO This should like like cross betweeen Create / Get  
+	//w.WriteHeader(http.StatusOK)
+	params := mux.Vars(r)
 
+	for index, assignment := range Assignments {
+		if assignment.Id == params["id"]{
+			r.ParseForm()
+			if(r.FormValue("id") != ""){
+				assignment.Id =  r.FormValue("id")
+				assignment.Title =  r.FormValue("title")
+				assignment.Description =  r.FormValue("desc")
+				assignment.Points, _ =  strconv.Atoi(r.FormValue("points"))
+				Assignments = append(Assignments[:index], Assignments[index+1:]...)
+				Assignments = append(Assignments, assignment)
+				w.WriteHeader(http.StatusCreated)
+			}
+			w.WriteHeader(http.StatusNotFound)
+			break
+		}
+	}
+	
+	
 }
 
 func CreateAssignment(w http.ResponseWriter, r *http.Request) {
