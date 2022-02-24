@@ -100,13 +100,47 @@ func GetAssignment(w http.ResponseWriter, r *http.Request) {
 	//w.Write(jsonResponse)
 }
 
+// <<<<<<< main
+// =======
+func DeleteAssignment(w http.ResponseWriter, r *http.Request) {
+	log.Printf("Entering %s DELETE end point", r.URL.Path)
+	w.Header().Set("Content-Type", "application/txt")
+	w.WriteHeader(http.StatusOK)
+	params := mux.Vars(r)
+	
+	response := make(map[string]string)
+
+	response["status"] = "No Such ID to Delete"
+	for index, assignment := range Assignments {
+			if assignment.Id == params["id"]{
+				Assignments = append(Assignments[:index], Assignments[index+1:]...)
+				response["status"] = "Success"
+				break
+			}
+	}
+		
+	jsonResponse, err := json.Marshal(response)
+	if err != nil {
+		return
+	}
+	w.Write(jsonResponse)
+}
+
+// >>>>>>> main
 func UpdateAssignment(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s end point", r.URL.Path)
 	w.Header().Set("Content-Type", "application/json")
 	
+// <<<<<<< main
 	//TODO This should like like cross betweeen Create / Get  
 	//w.WriteHeader(http.StatusOK)
 	params := mux.Vars(r)
+=======
+	var response Response
+	response.Assignments = Assignments
+
+
+// >>>>>>> main
 
 	for index, assignment := range Assignments {
 		if assignment.Id == params["id"]{
