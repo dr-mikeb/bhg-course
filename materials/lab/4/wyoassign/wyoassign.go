@@ -19,6 +19,7 @@ type Assignment struct {
 	Title string `json:"title`
 	Description string `json:"desc"`
 	Points int `json:"points"`
+	//DueDate string `json:"DueDate"`
 }
 
 var Assignments []Assignment
@@ -54,7 +55,7 @@ func GetAssignments(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
-
+	// else if to see what happens if error is found
 	//TODO 
 	w.Write(jsonResponse)
 }

@@ -27,6 +27,7 @@ type APIInfo struct {
 	Unlocked     bool   `json:"unlocked"`
 }
 
+
 func (s *Client) APIInfo() (*APIInfo, error) {
 	res, err := http.Get(fmt.Sprintf("%s/api-info?key=%s", BaseURL, s.apiKey))
 	if err != nil {
