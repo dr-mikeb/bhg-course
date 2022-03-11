@@ -16,12 +16,12 @@ import (
 
 type Response struct{
 	Assignments []Assignment `json:"assignments"`
-	//Cars []Car `json:"cars"`
-}
-
-type Response1 struct{
 	Cars []Car `json:"cars"`
 }
+
+//type Response1 struct{
+//	Cars []Car `json:"cars"`
+//}
 
 type Assignment struct {
 	Id string `json:"id"`
@@ -181,21 +181,21 @@ func CreateAssignment(w http.ResponseWriter, r *http.Request) {
 
 func GetCars(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s end point", r.URL.Path)
-	var response1 Response1
+	var response Response
 
-	response1.Cars = Cars
+	response.Cars = Cars
 
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(http.StatusOK)
 	
-	jsonResponse1, err := json.Marshal(response1)
+	jsonResponse, err := json.Marshal(response)
 
 	if err != nil {
 		return
 	}
 	// else if to see what happens if error is found
 	//TODO 
-	w.Write(jsonResponse1)
+	w.Write(jsonResponse)
 }
 
 func GetCar(w http.ResponseWriter, r *http.Request) {
@@ -220,22 +220,22 @@ func DeleteCar(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	params := mux.Vars(r)
 	
-	response1 := make(map[string]string)
+	response := make(map[string]string)
 	
-	response1["status"] = "No Such ID to Delete"
+	response["status"] = "No Such ID to Delete"
 	for index, carr := range Cars {
 		if carr.Type == params["type"]{
 			Cars = append(Cars[:index], Cars[index+1:]...)
-			response1["status"] = "Success"
+			response["status"] = "Success"
 			break
 		}
 	}
 				
-	jsonResponse1, err := json.Marshal(response1)
+	jsonResponse, err := json.Marshal(response)
 	if err != nil {
 		return
 	}
-	w.Write(jsonResponse1)
+	w.Write(jsonResponse)
 }
 
 func UpdateCar(w http.ResponseWriter, r *http.Request) {
@@ -245,7 +245,7 @@ func UpdateCar(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	var carr Car
-	response1 := make(map[string]string)
+	response := make(map[string]string)
 	for _, car := range Cars {
 		if car.Type == r.FormValue("type"){
 		carr.Type =  r.FormValue("type")
@@ -253,15 +253,15 @@ func UpdateCar(w http.ResponseWriter, r *http.Request) {
 		carr.Model =  r.FormValue("model")
 		carr.Year, _ =  strconv.Atoi(r.FormValue("year"))
 		
-		response1["status"] = "Success"
+		response["status"] = "Success"
 		break
 		}
 	}
-	jsonResponse1, err := json.Marshal(response1)
+	jsonResponse, err := json.Marshal(response)
 	if err != nil {
 		return
 	}
-	w.Write(jsonResponse1)
+	w.Write(jsonResponse)
 
 }
 
