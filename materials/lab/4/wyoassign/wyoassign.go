@@ -19,9 +19,9 @@ type Response struct{
 	Cars []Car `json:"cars"`
 }
 
-//type Response1 struct{
-//	Cars []Car `json:"cars"`
-//}
+type Response1 struct{
+	Cars []Car `json:"cars"`
+}
 
 type Assignment struct {
 	Id string `json:"id"`

@@ -10,12 +10,18 @@ import (
 
 
 func main() {
+	
 	wyoassign.InitAssignments()
+	log.Println("starting API server")
+
+	wyoassign.InitCars()
 	log.Println("starting API server")
 
 	//create a new router
 	router := mux.NewRouter()
 	log.Println("creating routes")
+
+	
 
 
 	//specify endpoints
@@ -31,7 +37,7 @@ func main() {
 	router.HandleFunc("/car/{type}", wyoassign.GetCar).Methods("GET")
 	router.HandleFunc("/car/{type}", wyoassign.DeleteCar).Methods("DELETE")		
 	router.HandleFunc("/car", wyoassign.CreateCar).Methods("POST")	
-	router.HandleFunc("/carcs/{id}", wyoassign.UpdateCar).Methods("PUT")
+	router.HandleFunc("/cars/{id}", wyoassign.UpdateCar).Methods("PUT")
 
 	http.Handle("/", router)
 	
