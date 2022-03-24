@@ -2,9 +2,9 @@
 Due April 1st at 11:59PM
 
 ## Development Work [15 points]
-- Complete the 4 TODOs in [main/main.go]
-- Complete the 1 TODO in [scrape/scrape.go]
-- Complete the 10 TODOs in [scrape/scrapeapi.go]
+- Complete the 4 TODOs in [main.go](course-materials/materials/lab/6/main/main.go)
+- Complete the 1 TODO in [scrape/scrape.go](course-materials/materials/lab/6/scrape/scrape.go)
+- Complete the 10 TODOs in [scrape/scrapeapi.go](course-materials/materials/lab/6/scrape/scrapeapi.go)
 
 
 ## Capture Submission details
