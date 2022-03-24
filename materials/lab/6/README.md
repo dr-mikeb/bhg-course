@@ -16,10 +16,10 @@ Due April 1st at 11:59PM
 
 
 0. http://YOURHOST:8080/indexer?location=/  --> [LASTNAME_ROOTCHECK.HTML]
-2. http://YOURHOST:8080/clear  ;  http://YOURHOST:8080/addsearch/.go ; http://YOURHOST:8080/api-status  --> [LASTNAME_CLEARSETCHECK.HTML]
+2. http://YOURHOST:8080/clear  ;  http://YOURHOST:8080/addsearch/go ; http://YOURHOST:8080/api-status  --> [LASTNAME_CLEARSETCHECK.HTML]
 3. http://YOURHOST:8080/search?q=main.md --> [LASTNAME_CHECKSEARCH.HTML]
 4. http://YOURHOST:8080/search  --> [LASTNAME_ALL_PRERESET.HTML]
-5. http://YOURHOST:8080/reset  ; http://YOURHOST:8080/indexer?location=/&regex=.md --> [LASTNAME_CUSTOMREGEX.HTML]
+5. http://YOURHOST:8080/reset  ; http://YOURHOST:8080/indexer?location=/&regex=md --> [LASTNAME_CUSTOMREGEX.HTML]
 6. http://YOURHOST:8080/search --> [LASTNAME_FINAL.HTML]
 
 ## Submit 
