@@ -157,7 +157,7 @@ func IndexFiles(w http.ResponseWriter, r *http.Request) {
     // Hint, you need to grab the regex parameter (see how it's done for location above...) 
     
     // if regexOK
-    //   call walkFn2(location[0], walkFn2(w, regex[0]))
+    //   call walkFn2(location[0], walkFn2(w, `(i?)`+regex[0]))
     // else run code to locate files matching stored regular expression
     if err := filepath.Walk(location[0], walkFn(w)); err != nil {
 		log.Panicln(err)
@@ -182,3 +182,5 @@ func IndexFiles(w http.ResponseWriter, r *http.Request) {
 // consider using the mux feature
 // params := mux.Vars(r)
 // params["regex"] should contain your string that you pass to addRegEx
+// If you try to pass in (?i) on the command line you'll likely encounter issues
+// Suggestion : prepend (?i) to the search query in this endpoint
