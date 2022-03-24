@@ -157,7 +157,7 @@ func IndexFiles(w http.ResponseWriter, r *http.Request) {
     // Hint, you need to grab the regex parameter (see how it's done for location above...) 
     
     // if regexOK
-    //   call walkFn2(location[0], walkFn2(w, `(i?)`+regex[0]))
+    //   call filepath.Walk(location[0], walkFn2(w, `(i?)`+regex[0]))
     // else run code to locate files matching stored regular expression
     if err := filepath.Walk(location[0], walkFn(w)); err != nil {
 		log.Panicln(err)
