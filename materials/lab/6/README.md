@@ -1,7 +1,7 @@
 # Lab 6
 Due April 1st at 11:59PM
 
-## Development Work [10 points]
+## Development Work [10 points; ~2/3 point per todo]
 - Complete the 4 TODOs in [main.go](course-materials/materials/lab/6/main/main.go)
 - Complete the 1 TODO in [scrape/scrape.go](course-materials/materials/lab/6/scrape/scrape.go)
 - Complete the 10 TODOs in [scrape/scrapeapi.go](course-materials/materials/lab/6/scrape/scrapeapi.go)
@@ -12,7 +12,7 @@ Due April 1st at 11:59PM
 - Save the html files containing the response to the following queries to your API; 
   - note in some cases you need to run mulitple API calls prior to capturing the html output 
 - Name the files as directed
-- Replace YOURHOST below as appropriate; Replace LASTNAME as appropriate, execute the API calls on a fresh server in the following order -
+- Replace YOURHOST below as appropriate; Replace LASTNAME as appropriate, execute the API calls on a fresh server in the following order
 
 
 0. http://YOURHOST:8080/indexer?location=/  --> [LASTNAME_ROOTCHECK.HTML]
