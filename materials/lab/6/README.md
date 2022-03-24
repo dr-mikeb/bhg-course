@@ -1,7 +1,7 @@
 # Lab 6
 Due April 1st at 11:59PM
 
-## Development Work [15 points]
+## Development Work [10 points]
 - Complete the 4 TODOs in [main.go](course-materials/materials/lab/6/main/main.go)
 - Complete the 1 TODO in [scrape/scrape.go](course-materials/materials/lab/6/scrape/scrape.go)
 - Complete the 10 TODOs in [scrape/scrapeapi.go](course-materials/materials/lab/6/scrape/scrapeapi.go)
@@ -23,6 +23,6 @@ Due April 1st at 11:59PM
 6. http://YOURHOST:8080/search --> [LASTNAME_FINAL.HTML]
 
 ## Submit 
-1. ZIP FILE with all 6 Files
-2. Link to your Github Repository
+1. ZIP FILE with all 6 Files [10 points]
+2. Link to your Github Repository [10 points]
 3. List of Collaborators
