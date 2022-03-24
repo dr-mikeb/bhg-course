@@ -91,7 +91,7 @@ func APISTATUS(w http.ResponseWriter, r *http.Request) {
 
 func MainPage(w http.ResponseWriter, r *http.Request) {
 	log.Printf("Entering %s end point", r.URL.Path)
-    w.Header().Set("Content-Type", "application/html-")
+    w.Header().Set("Content-Type", "text/html")
 
 	w.WriteHeader(http.StatusOK)
     //TODO_8 - Write out something better than this that describes what this api does
