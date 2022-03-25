@@ -215,8 +215,7 @@ func IndexFiles(w http.ResponseWriter, r *http.Request) {
     //TODO_10: something like ...  rootDir string := "???"
     //TODO_10: create another variable and append location[0] to rootDir (where appropriate) to patch this hole
 	rootDir := `/home/cabox`
-	location[0] = rootDir+location[0]
-
+	//append to location[0] after error checks
     if locOK && len(location[0]) > 0 {
         w.WriteHeader(http.StatusOK)
 
@@ -228,7 +227,7 @@ func IndexFiles(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte(`"optional": "/indexer?location=/xyz&regex=(i?).md"}}`))
         return 
     }
-
+	location[0] = rootDir+location[0]
     //wrapper to make "nice json"
     w.Write([]byte(`{ `))
     
