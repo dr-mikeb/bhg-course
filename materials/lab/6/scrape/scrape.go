@@ -7,7 +7,7 @@ package scrape
 import (
 	"regexp"
 )
-
+var LOG_LEVEL int
 
 //==========================================================================\\
 // || GLOBAL DATA STRUCTURES  ||
@@ -43,6 +43,8 @@ func resetRegEx(){
 
 func clearRegEx(){
      //TODO_15 - Validate that this works as expected and doesn't cause issues
+
+	 //this was completed through running tests with no issues
     regexes = nil
 }
 
