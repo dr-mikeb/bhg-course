@@ -2,9 +2,15 @@ package main
 
 import (
 	"hscan/hscan"
+	"log"
+	"os"
 )
 
 func main() {
+
+	if len(os.Args) != 2 {
+		log.Fatalln("You need to choose a local file name to this directory")
+	}
 
 	//To test this with other password files youre going to have to hash
 	var md5hash = "77f62e3524cd583d698d51fa24fdff4f"
@@ -18,11 +24,17 @@ func main() {
 	// Download and use bigger password file from: https://weakpass.com/wordlist/tiny  (want to push yourself try /small ; to easy? /big )
 
 	//TODO Grab the file to use from the command line instead; look at previous lab (e.g., #3 ) for examples of grabbing info from command line
-	var file = "wordlist.txt"
+	//var file = "wordlist.txt"
+	//var file = "tiny.txt"
+	var fromTiny = "f4f107435b1448fe62175b19e47d7c47"
 
-	hscan.GuessSingle(md5hash, file)
-	hscan.GuessSingle(sha256hash, file)
-	hscan.GenHashMaps(file)
+	hscan.GuessSingle(md5hash, os.Args[1])
+	hscan.GuessSingle(sha256hash, os.Args[1])
+	hscan.GuessSingle(fromTiny, os.Args[1])
+	hscan.GenHashMaps(os.Args[1])
 	hscan.GetSHA(sha256hash)
 	hscan.GetMD5(sha256hash)
+	hscan.GetSHA(drmike1)
+	hscan.GetMD5(fromTiny)
+	hscan.GetMD5(drmike2)
 }
