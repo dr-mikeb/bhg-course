@@ -1,13 +1,22 @@
 // Do not use this file directly, do not attemp to compile this source file directly
 // Go To lab/3/shodan/main/main.go
 
+
 package shodan
+
 
 import (
 	"encoding/json"
 	"fmt"
 	"net/http"
 )
+
+//const BaseURL = "https://api.shodan.io"
+
+//type Client struct {
+///	apiKey string
+//}
+
 
 type APIInfo struct {
 	QueryCredits int    `json:"query_credits"`
@@ -17,6 +26,7 @@ type APIInfo struct {
 	Https        bool   `json:"https"`
 	Unlocked     bool   `json:"unlocked"`
 }
+
 
 func (s *Client) APIInfo() (*APIInfo, error) {
 	res, err := http.Get(fmt.Sprintf("%s/api-info?key=%s", BaseURL, s.apiKey))
