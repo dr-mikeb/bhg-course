@@ -8,6 +8,7 @@ import (
 	"regexp"
 )
 
+//LOG_LEVEL = 1 // LOG API details only 
 
 //==========================================================================\\
 // || GLOBAL DATA STRUCTURES  ||
