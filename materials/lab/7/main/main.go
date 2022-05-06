@@ -22,7 +22,9 @@ func main() {
 
 	hscan.GuessSingle(md5hash, file)
 	hscan.GuessSingle(sha256hash, file)
+	//hscan.GuessSingle(drmike1, file)
+	//hscan.GuessSingle(drmike2, file)
 	hscan.GenHashMaps(file)
-	hscan.GetSHA(sha256hash)
-	hscan.GetMD5(sha256hash)
+	hscan.GetSHA(drmike2)
+	hscan.GetMD5(drmike1)
 }

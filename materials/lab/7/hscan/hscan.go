@@ -15,7 +15,7 @@ import (
 var shalookup map[string]string
 var md5lookup map[string]string
 
-func GuessSingle(sourceHash string, filename string) {
+func GuessSingle(sourceHash string, filename string) string {
 
 	f, err := os.Open(filename)
 	if err != nil {
@@ -34,21 +34,36 @@ func GuessSingle(sourceHash string, filename string) {
 		hash := fmt.Sprintf("%x", md5.Sum([]byte(password)))
 		if hash == sourceHash {
 			fmt.Printf("[+] Password found (MD5): %s\n", password)
+			return password
 		}
 
 		hash = fmt.Sprintf("%x", sha256.Sum256([]byte(password)))
 		if hash == sourceHash {
 			fmt.Printf("[+] Password found (SHA-256): %s\n", password)
 		}
+		return password
 	}
 
 	if err := scanner.Err(); err != nil {
 		log.Fatalln(err)
 	}
+
+	return ""
 }
 
 func GenHashMaps(filename string) {
+	f, err := os.Open(filename)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	defer f.Close()
 
+	scanner := bufio.NewScanner(f)
+
+	for scanner.Scan() {
+		password := scanner.Text()
+		fmt.Printf("%x", md5.Sum([]byte(password)))
+	}
 	//TODO
 	//itterate through a file (look in the guessSingle function above)
 	//rather than check for equality add each hash:passwd entry to a map SHA and MD5 where the key = hash and the value = password
@@ -75,5 +90,14 @@ func GetSHA(hash string) (string, error) {
 
 //TODO
 func GetMD5(hash string) (string, error) {
-	return "", errors.New("not implemented")
+	password, ok := md5lookup[hash]
+	if ok {
+		return password, nil
+
+	} else {
+
+		return "", errors.New("password does not exist")
+
+	}
+	
 }
