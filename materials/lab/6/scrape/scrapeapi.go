@@ -136,7 +136,7 @@ func IndexFiles(w http.ResponseWriter, r *http.Request) {
     //TODO_10: Assume the location passed starts at /home/ (or in Windows pick some "safe?" location)
     //TODO_10: something like ...  rootDir string := "???"
     //TODO_10: create another variable and append location[0] to rootDir (where appropriate) to patch this hole
-
+	rootDir := "/home/cabox"
     if locOK && len(location[0]) > 0 {
         w.WriteHeader(http.StatusOK)
 
